@@ -63,7 +63,7 @@ public class LoginPage extends JFrame{
             }
         });
     }
-    public static void loginREST(String username,String password) throws Exception {
+    public void loginREST(String username,String password) throws Exception {
 
         String url = "http://192.168.0.9:3000/login";
 
@@ -77,8 +77,8 @@ public class LoginPage extends JFrame{
         con.setDoInput(true);
         con.connect();
         JSONObject jsonParam = new JSONObject();
-        jsonParam.put("username", username);
-        jsonParam.put("password", password);
+        jsonParam.put("username", Username.getText());
+        jsonParam.put("password", Password.getText());
         System.out.println(jsonParam.toString());//
         byte[] jsData = jsonParam.toString().getBytes("UTF-8");
         OutputStream os = con.getOutputStream();
