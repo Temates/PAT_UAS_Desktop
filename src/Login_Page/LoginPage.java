@@ -24,9 +24,10 @@ public class LoginPage extends JFrame{
     private JLabel lbl_password;
     private JFrame frame;
 
+    boolean login_condition = false;
     public LoginPage(){
         frame = new JFrame("Login Frame");
-        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         frame.setPreferredSize(new Dimension(300,250));
         frame.setResizable(false);
 
@@ -95,8 +96,8 @@ public class LoginPage extends JFrame{
             response.append(input);
         }
         in.close();
-        JOptionPane.showMessageDialog(null,response);
-        System.out.println("Data : \n" +response.toString());
+
+        //System.out.println("Data : \n" +response.toString());
 //        JSONArray myArray = new JSONArray(response.toString());
 //        for (int i=0; i < myArray.length();i++){
 //            JSONObject arrObj = myArray.getJSONObject(i);
@@ -106,6 +107,21 @@ public class LoginPage extends JFrame{
 //        }
         os.flush();
         os.close();
+        if(response.toString().equals("Login Sukses")){
+            JOptionPane.showMessageDialog(null,response);
+
+
+            frame.dispose(); //Destroy the JFrame object
+            JFrame nF = new Data_GET();
+            nF.setSize(800,600);
+            nF.setLocationRelativeTo(null);
+            nF.setResizable(true);
+            nF.setVisible(true); //you can't see me!
+        }else if (response.toString().equals("Login Gagal")){
+
+            JOptionPane.showMessageDialog(null,response);
+
+        }
 
     }
 
