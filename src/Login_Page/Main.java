@@ -16,8 +16,8 @@ import java.util.List;
 public class Main {
     public static void main(String [] args) throws Exception {
 
-        //new LoginPage();
-        new Data_GET();
+        new LoginPage();
+        //new Data_GET();
 //    SwingUtilities.invokeLater(new Runnable(){
 //    public void run() {
 //

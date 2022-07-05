@@ -50,13 +50,16 @@ public class LoginPage extends JFrame{
                 if (Username.getText().trim().isEmpty() && Password.getText().trim().isEmpty()) {
                     lbl_username.setText("Username is Empty");
                     lbl_password.setText("Password is Empty");
-                } else if (username.getText().trim().isEmpty()) {
+                } else if (Username.getText().trim().isEmpty()) {
+
                     lbl_username.setText("Username is Empty");
-                } else if (password.getText().trim().isEmpty()) {
+                    lbl_password.setText("");
+                } else if (Password.getText().trim().isEmpty()) {
+                    lbl_username.setText("");
                     lbl_password.setText("Password is Empty");
                 } else {
                     try {
-                        loginREST(username.getText(), password.getText());
+                        loginREST();
                     } catch (Exception ex) {
                         throw new RuntimeException(ex);
                     }
@@ -64,7 +67,7 @@ public class LoginPage extends JFrame{
             }
         });
     }
-    public void loginREST(String username,String password) throws Exception {
+    public void loginREST() throws Exception {
 
         String url = "http://192.168.0.9:3000/login";
 
@@ -113,14 +116,14 @@ public class LoginPage extends JFrame{
 
             frame.dispose(); //Destroy the JFrame object
             JFrame nF = new Data_GET();
-            nF.setSize(800,600);
-            nF.setLocationRelativeTo(null);
-            nF.setResizable(true);
-            nF.setVisible(true); //you can't see me!
+
         }else if (response.toString().equals("Login Gagal")){
 
             JOptionPane.showMessageDialog(null,response);
-
+            Username.setText("");
+            Password.setText("");
+            lbl_password.setText("");
+            lbl_username.setText("");
         }
 
     }
